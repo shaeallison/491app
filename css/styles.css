@@ -1,10 +1,61 @@
-.fa fa-bars{
-  width: 150%;
-  color: red;
+.backgroundmap{
+  background-image: url(../backgroundmap.svg);
+  background-repeat: no-repeat;
+  width: 325%;
+  height: 325%;
+  left:-225px;
+  position: absolute;
+  opacity: 0.7;
 }
 
-.fa{
-  color: red;
-  font-size: 20px;
-  
+.statusbox{
+  background-color: black;
+}
+
+.status{
+  position: absolute;
+  top: 80px;
+  color: #565656;
+  left: 250px;
+  font-size: 15pt;
+  background-color: #fff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 50px;
+
+}
+
+.location{
+  position: absolute;
+  right: 735px;
+  top: 515px;
+  height: 25px;
+}
+
+.settings{
+  position: absolute;
+  right: 735px;
+  top: 545px;
+  height: 25px;
+}
+
+.feed{
+  position: absolute;
+  right: 575px;
+  top: 520px;
+  height: 45px;
+}
+.popular{
+  position: absolute;
+  right: 522px;
+  top: 520px;
+  height: 45px;
+}
+.profile{
+  position: absolute;
+  right: 470px;
+  top: 520px;
+  height: 45px;
 }
