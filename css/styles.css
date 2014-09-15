@@ -8,9 +8,9 @@
 }
 
 .background{
-  background-image: url(../backgroundmap.svg);
+  background-color: #7F7E7D;
   background-repeat: no-repeat;
-  background-size: 1500px;
+  width: 1000px;
 
 
 }
@@ -21,7 +21,6 @@
 .searchbar{
   padding-top: 75px;
   text-align: center;
-
 }
 
 .tabs dd, .tabs .tab-title {
@@ -34,51 +33,38 @@
 
 
 .icontabs{
-  padding-left: 25px;
+  padding-left: 30px;
 }
 
-.tabicon{
-  width: px;
-}
+
 
 .location{
-  position: absolute;
-  right: 735px;
-  top: 515px;
+  position: relative;
+  padding-left: 10px;
   height: 25px;
 }
 
 .settings{
-  position: absolute;
-  right: 735px;
-  top: 545px;
+  position: relative;
+  padding-left: 10px;
   height: 25px;
 }
 
-.navicon{
-  max-width: 50%;
-}
-
 .feed{
-  position: absolute;
-  right: 575px;
-  top: 520px;
+  position: relative;
+  padding-left: 10px;
   height: 45px;
-  max-width: 50%;
+  float: right;
 }
 
-img{
-  max-width: 50%;
-}
 .popular{
-  position: absolute;
-  right: 522px;
-  top: 520px;
+  position: relative;
   height: 45px;
+  float: right;
 }
+
 .profile{
-  position: absolute;
-  right: 470px;
-  top: 520px;
+  position: relative;
   height: 45px;
+  float: right;
 }
