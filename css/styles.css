@@ -9,8 +9,7 @@
 
 .background{
   background-color: #7F7E7D;
-  background-repeat: no-repeat;
-  width: 1000px;
+
 
 
 }
@@ -24,6 +23,7 @@
 }
 
 .tabs dd, .tabs .tab-title {
+  padding-top: 75px;
   position: relative;
   margin: auto;
   margin-bottom: 0 !important;
@@ -52,9 +52,9 @@
 
 .feed{
   position: relative;
-  padding-left: 10px;
   height: 45px;
   float: right;
+  padding-right: 10px;
 }
 
 .popular{
