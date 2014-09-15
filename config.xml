@@ -4,12 +4,12 @@
 		id        = "com.yourdomainname.com"
 		versionCode="1"
 		version   = "1">
-		<name>App Title</name>
+		<name>Shae's App</name>
 		<description>
-                    App Description in 1-2 sentences
+                    This is a mobile travel app focused on the sharing your journey while on a trip with photos, video, location pins, written status updates, and forms of travel (ie walk, car, train, plane, etc.)
 		</description>
 		<author href="domainname.com" email="email@email.com">
-                    Your Name
+                    Shae Allison
 		</author>
                 
                 <access origin="*" subdomains="true" />
