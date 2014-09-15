@@ -42,7 +42,7 @@
   position: relative;
   padding-left: 10px;
   height: 25px;
-  top: 240px;
+  top: 215px;
   
 }
 
@@ -50,7 +50,7 @@
   position: relative;
   padding-left: 10px;
   height: 25px;
-  top: 245px;
+  top: 220px;
 }
 
 .feed{
@@ -58,19 +58,19 @@
   height: 45px;
   float: right;
   padding-right: 10px;
-  top: 200px;
+  top: 175px;
 }
 
 .popular{
   position: relative;
   height: 45px;
   float: right;
-  top: 200px;
+  top: 175px;
 }
 
 .profile{
   position: relative;
   height: 45px;
   float: right;
-  top: 200px;
+  top: 175px;
 }
