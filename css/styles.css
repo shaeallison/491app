@@ -1,16 +1,25 @@
-.backgroundmap{
+  .FIXbackgroundmap{
   background-image: url(../backgroundmap.svg);
   background-repeat: no-repeat;
   width: 325%;
   height: 325%;
-  left:-225px;
-  position: absolute;
+  position: absolte;
   opacity: 0.7;
 }
 
 .statusbox{
   background-color: black;
 }
+
+.searchbar{
+  text-align: center;
+}
+
+.tabs dd, .tabs .tab-title {
+  position: relative;
+  margin: auto;
+  margin-bottom: 0 !important;
+  list-style: none;
 
 .status{
   position: absolute;
@@ -23,7 +32,7 @@
   padding-bottom: 8px;
   padding-left: 40px;
   padding-right: 40px;
-  border-radius: 50px;
+
 
 }
 
