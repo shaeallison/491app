@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Shae's App</title>
     <title>Profile</title>
 
     <link rel="stylesheet" href="css/styles.css" />
@@ -20,12 +19,33 @@
   </head>
 
   <body>
-    <!-- start of map background -->
-    <div class="backgroundmap">
+    
+    <div class="row icontabs">
+      <div class="row">
+      </div>
       
-    <div class="row statusbox">
-      <h1 class="status"> Where are you now? </h1>
+      <dl class="tabs" data-tab>
+	<dd class="active"><a href="#panel1"><img class="tabicon" src="camera-white.png"></a></dd>
+	<dd><a href="#panel2"><img class="tabicon" src="video-white.png"></a></dd>
+	<dd><a href="#panel3"><img class="tabicon" src="cloud-white.png"></a></dd>
+	<dd><a href="#panel4"><img class="tabicon" src="location-white.png"></a></dd>
+      </dl>
+      <div class="tabs-content ">
+	<div class="content active" id="panel1">
+	  <p>Photo</p>
+	</div>
+	<div class="content" id="panel2">
+	  <p>Video</p>
+	</div>
+	<div class="content" id="panel3">
+	  <p>Status</p>
+	</div>
+	<div class="content" id="panel4">
+	  <p>Location</p>
+	</div>
+      </div>
     </div>
+
     
     <div class="row">
       <a class=""><img class="location" src="location.png"></a>
@@ -33,20 +53,15 @@
     <div class="row">
       <a class=""><img class="settings" src="settings.png"></a>
     </div>
+    
+    <div class="footer">
+      <a href="feed.html"><img class="footernav" src="profile.png"></a>
+      <a href="popular.html"><img class="footernav" src="profile.png"></a>
+      <a href="profile.html"><img class="footernav" src="profile.png"></a>
+      
+    </div>
 
-    
-    <div class="row">
-      <a href="feed.html" class=""><img class="feed" src="profile.png"></a>
-    </div>
-    <div class="row">
-      <a href="popular.html" class=""><img class="popular" src="profile.png"></a>
-    </div>
-    <div class="row">
-      <a href="profile.html" class=""><img class="profile" src="profile.png"></a>
-    </div>
-	
-    
-    </div><! end of map div -->
+
     
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>

@@ -19,6 +19,11 @@
   list-style: none;
 }
 
+.tabicon{
+  height:30px;
+  width: 30px;
+  
+}
 
 .location{
   position: relative;
