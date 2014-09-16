@@ -1,6 +1,11 @@
+function onDeviceReady() {
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType=navigator.camera.DestinationType;
+}
+
 function launchCamera(){
     console.log("working")
-navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.DATA_URL
 });
 }
