@@ -1,7 +1,9 @@
 function launchCamera(){
+    console.log("working")
 navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.DATA_URL
-});}
+});
+}
 
 function onSuccess(imageData) {
     var image = document.getElementById('myImage');
