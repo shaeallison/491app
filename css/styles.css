@@ -1,10 +1,9 @@
-.FIXbackgroundmap{
-  background-image: url(../backgroundmap.svg);
+.backgroundmap{
+  background-image: url(../backgroundmap.png);
   background-repeat: no-repeat;
-  width: 325%;
-  height: 325%;
-  position: absolte;
-  opacity: 0.7;
+  position: fixed;
+  background-position: -1350px;
+  height: 3%;
 }
 
 .background{
@@ -20,24 +19,22 @@
 }
 
 .tabicon{
-  height:30px;
-  width: 30px;
-  
+
 }
 
 .location{
-  position: relative;
+  position: fixed;
   padding-left: 10px;
   height: 25px;
-  top: 195px;
+  top: 350px;
   
 }
 
 .settings{
-  position: relative;
+  position: fixed;
   padding-left: 10px;
   height: 25px;
-  top: 200px;
+  top: 380px;
 }
 
 
@@ -49,7 +46,7 @@
     left: -5px;
     line-height: 50px;
     color: #aaa;
-    text-align: right;
+    text-align: center;
     width: 100%;
 }
 
