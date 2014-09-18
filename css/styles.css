@@ -53,3 +53,9 @@
 .footernav{
   height: 45px;
 }
+
+#map-canvas{
+  height: 400px;
+  width: 100%;
+  border: 1px solid black;
+}
