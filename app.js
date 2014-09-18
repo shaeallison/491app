@@ -1,5 +1,15 @@
 
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is Ready
+function onDeviceReady() {
+    console.log("onDeviceReady()");
+    navigator.geolocation.getCurrentPosition(generateMap, onError);
+    
+}
+
+
 
 //camera
 
