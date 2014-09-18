@@ -1,20 +1,27 @@
-function onDeviceReady() {
-    pictureSource=navigator.camera.PictureSourceType;
-    destinationType=navigator.camera.DestinationType;
+
+
+
+//camera
+
+function capturePhoto(){
+    //alert("capture button working");
+    navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
 }
 
-function launchCamera(){
-    console.log("working")
-    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    destinationType: Camera.DestinationType.DATA_URL
-});
+function uploadPhoto(data){
+    //this is where you would send the image file to server
+    
+    cameraPic.src = data;
+    //cameraPic.src = "data:image/jpeg;base64," + data;
+    // Successful upload to the server
+    navigator.notification.alert(
+        'Your Photo has been uploaded',  // message
+        okay,                           //callback
+        'Photo Uploaded',               // title
+        'OK'                            //buttonName
+    );
 }
 
-function onSuccess(imageData) {
-    var image = document.getElementById('myImage');
-    image.src = "data:image/jpeg;base64," + imageData;
-}
-
-function onFail(message) {
-    alert('Failed because: ' + message);
+function okay(){
+        // Do something
 }
