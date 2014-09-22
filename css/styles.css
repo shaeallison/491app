@@ -22,6 +22,14 @@
 
 }
 
+.camera-control{
+  display:block;
+  margin: auto;
+  positon: absolute;
+  z-index: 2;
+  
+}
+
 .location{
   position: fixed;
   padding-left: 10px;
