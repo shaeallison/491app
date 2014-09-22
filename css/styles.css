@@ -27,7 +27,7 @@
   padding-left: 10px;
   height: 25px;
   top: 350px;
-  
+  border: 2px solid red;
 }
 
 .settings{
@@ -35,6 +35,7 @@
   padding-left: 10px;
   height: 25px;
   top: 380px;
+  border: 2px solid red;
 }
 
 
