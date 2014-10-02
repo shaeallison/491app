@@ -201,7 +201,7 @@ function generateMap2(position) {
     var map2 = new google.maps.Map(document.getElementById("map-canvas2"),
         mapOptions2);
     
-    var marker2 = new google.maps.Marker({
+    var marker = new google.maps.Marker({
         position: currentLatLng,
         map: map2,
         title: 'Current Location'
