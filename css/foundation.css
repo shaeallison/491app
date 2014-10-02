@@ -3212,12 +3212,12 @@ blockquote p {
     position: relative;
     margin-bottom: 0 !important;
     list-style: none;
-  }
+    float: left; }
     .tabs dd > a, .tabs .tab-title > a {
       display: block;
       background-color: #efefef;
       color: #222222;
-      padding: 0.8rem 1.6rem;
+      padding: 1rem 2rem;
       font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
       font-size: 1rem; }
       .tabs dd > a:hover, .tabs .tab-title > a:hover {
