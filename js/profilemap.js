@@ -1,5 +1,4 @@
-
-//map index 
+//map profile 
 
 function onError(error) {
     console.log("onError()");
@@ -7,13 +6,13 @@ function onError(error) {
           'message: ' + error.message + '\n');
 }
 
-function generateMap(position) {
-    console.log("generateMap()");
+function generateMap2(position) {
+    console.log("generateMap2()");
     console.log(position.coords.latitude);
     console.log(position.coords.longitude);
     var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     
-    var mapOptions = {
+    var mapOptions2 = {
         //center:new google.maps.LatLng(-34.397, 150.644),
         center: currentLatLng,
         zoom: 15,
@@ -92,12 +91,12 @@ function generateMap(position) {
     }
 ]
     };
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
+    var map2 = new google.maps.Map(document.getElementById("map-canvas2"),
+        mapOptions2);
     
     var marker = new google.maps.Marker({
         position: currentLatLng,
-        map: map,
+        map: map2,
         title: 'Current Location'
     });
 }
@@ -112,10 +111,4 @@ function generateMap(position) {
     }
     console.log(position.coords.latitude);
     
-    google.maps.event.addDomListener(window, 'load' ,generateMap(position));
-
-
-
-
-
-
+    google.maps.event.addDomListener(window, 'load' ,generateMap2(position));
