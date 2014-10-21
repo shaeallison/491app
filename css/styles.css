@@ -164,8 +164,15 @@ a{
   color: #C0E8E8;
 }
 
+.post{
+  background-color: #354040;
+
+}
+
 button.camera-control{
   background-color: #354040;
-  margin: auto;
-  display: block;
+}
+
+.search{
+  background-color: #354040;
 }
