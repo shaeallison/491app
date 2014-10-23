@@ -181,3 +181,12 @@ button.camera-control{
   background-color: #354040;
   width:100%;
 }
+
+.searchbar{
+  background:#fff;
+  font-size: 10px;
+  position:fixed;
+  width:100%;
+  top:0;
+  padding: 3px;
+}

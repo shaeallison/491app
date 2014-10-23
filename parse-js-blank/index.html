@@ -6,24 +6,70 @@
   <meta name="description" content="My Parse App">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
 </head>
 
 
+<body>
   
+    <div id="login">
+      <div>username <input id="username" /></div>
+      <div>password <input id="password" /></div>
+      <div><button id="registerBtn" value="Register">Register</button></div>
+      <div id="status" style="display:inline">
+        <div id="user"></div><button id="logoutBtn">Logout</button>
+      </div>
 
-
+    
+    
+    
+    
   <script type="text/javascript">
     Parse.initialize("lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3", "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP");
     
+    $("#registerBtn").click(function() {
+      
+    var user = new Parse.User();
+    user.set("username", $("#username").val());
+    user.set("password", $("#password").val());
+    
+    user.signUp(null, {
+      success: function(user) {
+        // Open App
+        alert("Successfully registered!");
+      },
+      error: function(user,error) {
+        // Error message
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+    });
+    
+    $("#singInBtn").click(function() {
+      
+      Farse.User.logIn($("#username").val(), $("#password").val(), {
+        success: function(user) {
+          // after success
+          alert("Logged in successfully!");
+          
+          var currentUser = Parse.User.current();
+          if (currentUser) {
+            $("#user").html(currentUser.attributes.username);
+            $("#status").css("display", "inline");
+          } else {
+            // show the sign up or log in
+            
+          }
+        }
+      })
+    })
+ 
 
 
   </script>
-  
-  
-<body>
+    
 </body>
 
 </html>
