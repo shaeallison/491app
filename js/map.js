@@ -95,15 +95,14 @@ function generateMap(position) {
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
     
-    var image = 'cameraPic'
+    var image = 'data';
         marker = new google.maps.Marker({
         position: currentLatLng,
         map: map,
-        title: 'Current Location',
         icon: image
     });
-    
 
+}
 
 
 
