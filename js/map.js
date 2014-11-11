@@ -7,7 +7,7 @@ function onError(error) {
 }
 
 function generateMap(position) {
-    console.log("generateMap2()");
+    console.log("generateMap()");
     console.log(position.coords.latitude);
     console.log(position.coords.longitude);
     var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
