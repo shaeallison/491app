@@ -42,15 +42,25 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=panoramio"></script>
     <script>
+function generateMap(position) {
+    console.log("generateMap()");
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+    var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var marker = new google.maps.Marker({
+        position: currentLatLng,
+        map: map,
+        title: 'Current Location'
+    });
+}   
+    
 function initialize() {
   var mapOptions = {
     zoom: 15,
     center: new google.maps.LatLng(35.913200, -79.055845),
-    
   };
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-  var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+
 
   var map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
