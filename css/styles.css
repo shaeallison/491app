@@ -1,8 +1,49 @@
 /* Fresh Start CSS */
 
-.topnav{
-  padding-top: 15px;
+
+@font-family{
+  font-family: bebasneue;
+  src: url(fonts/BebasNeue.otf)
 }
+
+
+body{
+ background-color: #381E29;
+}
+.topnav{
+  padding-top: 30px;
+  padding-bottom: 5px;
+  background-color: #381E29;
+  color: white;
+  margin: -5px;
+}
+
+.home{
+  text-align: left;
+  font-family: bebasneue;
+  font-size: 40px
+}
+
+.settings{
+  text-align: right;
+  font-family: bebasneue;
+  font-size: 40px
+}
+
+.logo{
+  text-align: center;
+  font-family: bebasneue;
+  font-size: 40px;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:visited{
+  color: inherit;
+}
+
 
 div.gmnoprint.gmnoprint.gmnoprint {
   position: relative;
@@ -168,9 +209,7 @@ aside.right-off-canvas-menu ul.off-canvas-list li label{
   font-size: 15px;
 }
 
-a{
-  color: black;
-}
+
 
 .post{
   background-color: #354040;

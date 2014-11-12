@@ -4,6 +4,8 @@
     <title>Panoramio Layer</title>
     
     <link rel="stylesheet" href="css/styles.css" />
+
+    
     
 
     
@@ -84,20 +86,25 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
   <body>
-    <p class="topnav"><a href="index.html">ITER App</a></p>
+    
+    <p class="topnav">
+        <a class="home" href="index.html">home</a>
+        <a class="logo" href="index.html">ITER</a>
+        <a class="settings" href="index.html">set</a>
+    </p>
 
     <ul id="photo-panel">
       <li><strong>Photos clicked</strong></li>
     </ul>
-    <div class="row">
-    <div id="camera">
-	<a class="camera-control" onclick="capturePhoto();">Take Photo</a>
-    </div>
-    </div>
+
     
     <div id="map-canvas"></div>
 
   </body>
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
   <script src="js/map.js"></script>
   <script src="photoapp.js"></script>
+  
+  
 </html>
