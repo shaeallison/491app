@@ -89,8 +89,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <ul id="photo-panel">
       <li><strong>Photos clicked</strong></li>
     </ul>
+    <div class="row">
+    <div id="camera">
+	<a class="camera-control" onclick="capturePhoto();">Take Photo</a>
+    </div>
+    </div>
+    
     <div id="map-canvas"></div>
 
   </body>
   <script src="js/map.js"></script>
+  <script src="map.js"></script>
+  <script src="photoapp.js"></script>
 </html>

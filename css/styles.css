@@ -1,5 +1,13 @@
 /* Fresh Start CSS */
 
+.topnav{
+  padding-top: 15px;
+}
+
+div.gmnoprint.gmnoprint.gmnoprint {
+  position: relative;
+}
+
 .headercontainerprofile{
   background:#fff;
   height:110px;
@@ -161,7 +169,7 @@ aside.right-off-canvas-menu ul.off-canvas-list li label{
 }
 
 a{
-  color: #C0E8E8;
+  color: black;
 }
 
 .post{
@@ -169,8 +177,17 @@ a{
 
 }
 
-button.camera-control{
-  background-color: #354040;
+a.camera-control{
+  color: white;
+  text-align:center;
+}
+
+#camera{
+  background-color: black;
+  border: 2px solid black;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .search{
