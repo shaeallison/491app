@@ -6,34 +6,29 @@
   src: url(fonts/BebasNeue.otf)
 }
 
+.headernav{
+  height: 40px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
 
 body{
  background-color: #381E29;
 }
 .topnav{
-  padding-top: 30px;
-  padding-bottom: 5px;
-  background-color: #381E29;
-  color: white;
-  margin: -5px;
+ 
 }
 
 .home{
-  text-align: left;
-  font-family: bebasneue;
-  font-size: 40px
+  width: 20%;
 }
 
 .settings{
-  text-align: right;
-  font-family: bebasneue;
-  font-size: 40px
+  width: 20%;
 }
 
 .logo{
-  text-align: center;
-  font-family: bebasneue;
-  font-size: 40px;
+  width: 60%;
 }
 
 a{
@@ -60,13 +55,13 @@ div.gmnoprint.gmnoprint.gmnoprint {
 }
 
 .headercontainerindex{
-  background:#fff;
-  height:50px;
+
   left:0;
   position:fixed;
   width:100%;
   top: 0px;
   opacity:;
+  padding-top: 20px;
 }
 
 .headercontainerfeed{
@@ -221,12 +216,12 @@ a.camera-control{
   text-align:center;
 }
 
-#camera{
-  background-color: black;
-  border: 2px solid black;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+button.camera-control{
+  background-color: #381E29;
+  font-family: bebasneue;
+  font-size: 25px;
+  display: block;
+  margin: auto;
 }
 
 .search{
