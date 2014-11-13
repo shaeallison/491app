@@ -11,29 +11,120 @@ function onDeviceReady() {
 
 
 
-//camera
+Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
+var htmlBuilder = "";
+$(document).ready(function() {
+        
+    //getList(CommentObject);
+});
 
-function capturePhoto(){
-    //alert("capture button working");
-    navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
+function getList(CommentObject){
+    console.log("getList" + CommentObject);
+    var query = new Parse.Query(CommentObject);
+    query.find({
+        success: function(results) {
+            console.log(results);
+            $.each(results, function( index, value ) {
+            console.log(results[index].attributes.cost);
+            htmlBuilder += '<a href="?????">' + '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", " + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
+            + results[index].attributes.cost + '</ul>' + '</div>' + '<div class="small-2 columns">' + '</br>' + '<div class="friend-box">' + '<i class="fi-torso">' + " 3" + '</i>' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
+});
+            $("#event").html(htmlBuilder);
+        },
+        
+        error: function(error) {
+        }
+        
+    });
 }
+
+
+
+    
+
+function saveEvent(){
+    console.log("saveEvent()");
+    
+      var parseAPPID = "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3";
+        var parseJSID = "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP";
+        
+        Parse.initialize(parseAPPID, parseJSID);
+        var CommentObject = Parse.Object.extend("CommentObject");
+        
+        //getList(CommentObject);
+        
+	$("#commentForm").on("submit", function(e) {
+		e.preventDefault();
+
+		console.log("Handling the submit");
+		//add error handling here
+		//gather the form data
+                
+                var eventName = $("#name").val();
+                var eventVenue = $("#venue").val();
+                var eventTown = $("#town").val();
+                var eventState = $("#state").val();
+                var eventDay = $("#day").val();
+                var eventTime = $("#time").val();
+                var eventCost = $("#cost").val();
+    
+    if(imagedata !=""){
+        var parseFile = new Parse.File("pic.jpg", {base64:imagedata});
+            parseFile.save().then(function() {
+                console.log("getting data");
+                CommentObject.set("name",eventName);
+		CommentObject.set = ("venue", eventVenue);
+		CommentObject.set = ("town", eventTown);
+		CommentObject.set = ("state", eventState);
+                CommentObject.set = ("day", eventDay);
+		CommentObject.set = ("time", eventTime);
+		CommentObject.set = ("cost", eventCost);
+                CommentObject.set = ("file", parseFile);
+                
+                var comment = new CommentObject();
+                comment.save(data,{
+                    success:function() {
+                        console.log("Success");
+                        alert("You've created an event");
+                    },
+                    error:function(e) {
+                        console.dir(e);
+                    }
+                });
+	
+            });
+
+        }else{
+            console.log("error");
+            
+        }
+
+        });
+}
+        
+
+
+function capturePhoto() {
+    console.log("capturePhoto()");
+    navigator.camera.getPicture(uploadPhoto,null,{sourceType:2,quality:60,});
+}
+
 
 function uploadPhoto(data){
-    //this is where you would send the image file to server
-    
-    cameraPic.src = data;
-    //cameraPic.src = "data:image/jpeg;base64," + data;
-    // Successful upload to the server
-    navigator.notification.alert(
-        'Your Photo has been uploaded',  // message
-        okay,                           //callback
-        'Photo Uploaded',               // title
-        'OK'                            //buttonName
-    );
+    //send file to server
+    console.log("uploadPhoto()");
+   
+   cameraPic.src = data;
+        navigator.notification.alert(
+            'Your photo has been uploaded', //message
+            okay,                           //callback
+            'Photo uploaded',               //title
+            'OK'                            //buttonName
+        );
 }
 
-function okay(){
-        // Do something
+function okay (){
+        //Do Something
 }
 
 
