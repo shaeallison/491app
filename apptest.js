@@ -1,16 +1,47 @@
-Parse.initialize("x2dKlDuijtZ8PTLOFrQusYC0b1yyq1IHxvrJOiDA", "s2AB8R5SL7GIhbYujjaRNQh2A9ZeXLnXwl9hzSL8");
-CommentObject = Parse.Object.extend("CommentObject");
+Parse.initialize("lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3", "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3");
+photo = Parse.Object.extend("photo");
 
 var htmlBuilder = "";
 
 var currentLocation;
 
 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is ready
+function onDeviceReady() {
+	console.log("onDeviceReady()");
+	navigator.geolocation.getCurrentPosition(getPoint, onError);
+	console.log(pos);
+		
+	};
+
+
+
+function getPoint(position) {
+	lat=position.coords.latitude;
+	long=position.coords.longitude;
+	
+	
+	currentLocation = new Parse.GeoPoint({latitude: lat, longitude: long});
+}
+
+
+function onError(error) {
+        console.log("onError()");
+        alert('code: '    + error.code    + '\n' +
+                'message: ' + error.message + '\n');
+    }
+
+
+
+
+
 
 $(document).ready(function() {
         
 	
-	getList(CommentObject);
+	getList(photo);
 	
 	
 	
@@ -31,27 +62,17 @@ $(document).ready(function() {
 	e.preventDefault();
  
 	//get values
-	var name = $("#name").val();
-	var venue = $("#venue").val();
-	var town = $("#town").val();
-	var state = $("#state").val();
-        var day = $("#day").val();
-	var time = $("#time").val();
-	var cost = $("#cost").val();
-        var description=$("#description").val();
+	var comment = $("#photo").val();
+	var location = $("#location").val();
+        var caption=$("#caption").val();
  
-	var comment = new CommentObject();
+	var comment = new photo();
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
-				name:name,
-				venue:venue,
-				town:town,
-				state:state,
-				day:day,
-				time:time,
-				cost:cost,
-				description:description,
+				photo:photo,
+				location:location,
+				caption:caption,
 				geoPoint:point
 			},{
 				success:function(object) {
@@ -75,7 +96,7 @@ $(document).ready(function() {
 			var myLocation = new Parse.GeoPoint({latitude: pos.coords.latitude, longitude: pos.coords.longitude});
 
 			//Begin our query
-			var query = new Parse.Query(CommentObject);
+			var query = new Parse.Query(photo);
 			//Only within 10 miles
 			query.withinMiles("location", myLocation, 10);
 			//only within last week
@@ -90,16 +111,16 @@ $(document).ready(function() {
 		}, function(err) {
 			//Since geolocation failed, we can't allow the user to submit
 			alert("Sorry, we couldn't find your location.");
-		},{timeout:20000,enableHighAccuracy:false});
+		},{timeout:30000,enableHighAccuracy:false});
     }
 });
 
 
 
 
-function getList(CommentObject){
-    console.log("getList" + CommentObject);
-    var query = new Parse.Query(CommentObject);
+function getList(photo){
+    console.log("getList" + photo);
+    var query = new Parse.Query(photo);
     query.find({
         success: function(results) {
             console.log(results);
