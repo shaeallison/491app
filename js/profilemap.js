@@ -6,13 +6,13 @@ function onError(error) {
           'message: ' + error.message + '\n');
 }
 
-function generateMap2(position) {
-    console.log("generateMap2()");
+function generateMap(position) {
+    console.log("generateMap()");
     console.log(position.coords.latitude);
     console.log(position.coords.longitude);
     var currentLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     
-    var mapOptions2 = {
+    var mapOptions = {
         //center:new google.maps.LatLng(-34.397, 150.644),
         center: currentLatLng,
         zoom: 15,
@@ -91,12 +91,12 @@ function generateMap2(position) {
     }
 ]
     };
-    var map2 = new google.maps.Map(document.getElementById("map-canvas2"),
-        mapOptions2);
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
     
     var marker = new google.maps.Marker({
         position: currentLatLng,
-        map: map2,
+        map: map,
         title: 'Current Location'
     });
 }
@@ -104,13 +104,12 @@ function generateMap2(position) {
 
 
     
-/*For Browser testing. Comment out for app testing. 
+/*For Browser testing. Comment out for app testing. */
 
     var position ={
         coords:{latitude:35.913200, longitude:-79.055845}
     }
     console.log(position.coords.latitude);
     
-    google.maps.event.addDomListener(window, 'load' ,generateMap2(position));
+    google.maps.event.addDomListener(window, 'load' ,generateMap(position));
     
-*/
