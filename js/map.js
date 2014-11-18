@@ -31,7 +31,7 @@ function generateMap(position) {
 
 
     
-/*Comment out for app testing. */
+/*Comment out for app testing. 
 
     var position ={
         coords:{latitude:35.913200, longitude:-79.055845}
@@ -40,6 +40,6 @@ function generateMap(position) {
     
     google.maps.event.addDomListener(window, 'load' ,generateMap(position));
     
-
+*/
 
 
