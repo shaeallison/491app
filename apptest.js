@@ -1,5 +1,5 @@
 Parse.initialize("lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3", "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3");
-photo = Parse.Object.extend("photo");
+PhotoObject = Parse.Object.extend("PhotoObject");
 
 var htmlBuilder = "";
 
@@ -41,7 +41,7 @@ function onError(error) {
 $(document).ready(function() {
         
 	
-	getList(photo);
+	getList(PhotoObject);
 	
 	
 	
@@ -62,11 +62,11 @@ $(document).ready(function() {
 	e.preventDefault();
  
 	//get values
-	var comment = $("#photo").val();
+	var photo = $("#photo").val();
 	var location = $("#location").val();
         var caption=$("#caption").val();
  
-	var comment = new photo();
+	var comment = new PhotoObject();
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
@@ -96,7 +96,7 @@ $(document).ready(function() {
 			var myLocation = new Parse.GeoPoint({latitude: pos.coords.latitude, longitude: pos.coords.longitude});
 
 			//Begin our query
-			var query = new Parse.Query(photo);
+			var query = new Parse.Query(PhotoObject);
 			//Only within 10 miles
 			query.withinMiles("location", myLocation, 10);
 			//only within last week
@@ -118,9 +118,9 @@ $(document).ready(function() {
 
 
 
-function getList(photo){
-    console.log("getList" + photo);
-    var query = new Parse.Query(photo);
+function getList(PhotoObject){
+    console.log("getList" + PhotoObject);
+    var query = new Parse.Query(PhotoObject);
     query.find({
         success: function(results) {
             console.log(results);

@@ -16,7 +16,7 @@ function onDeviceReady() {
 
 function capturePhoto() {
     console.log("capturePhoto()");
-    navigator.camera.getPicture(uploadPhoto,null,{sourceType:0,quality:60,});
+    navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60,});
 }
 
 
