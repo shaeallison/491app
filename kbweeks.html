@@ -3,13 +3,13 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8" />
-    <title>ITER</title>
+    <title>Eventurous</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="themes/kitchen-sink.min.css" />
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="foundation-icons/foundation-icons.css" />
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Archivo+Narrow' rel='stylesheet' type='text/css'>  
     <style>
     
@@ -19,19 +19,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
      <script src="phonegap.js"></script>
     <script src="https://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
-    <script src="apptest.js"></script>
+    <script src="kbweeks.js"></script>
     
   </head>
-  <div class="header" align="center">
-    <a href="index.html"><img class="home" align="left" src="img/home.png"></a><img class="logo" align="center" src="img/logo.png"><a href="settings.html"><img class="settings" align="right" src="img/settings.png"></a>
-  </div>
-  
+
 <body>
 
 </br>
 
 <div class="container">
-  <h1 class="uploadtext">
+  <h1>
         Upload A Photo
     </h1>
   
@@ -39,27 +36,45 @@
 <form id="commentForm">
 			
 			<p>
-			<label class="labelfont" for="name">Photo</label>
+			<label for="name">Photo</label>
 			<input type="text" name="photo" id="photo" required>
 			</p>
 
 			<p>
-			<label class="labelfont" for="email">Caption</label>
+			<label for="email">Caption</label>
 			<input type="text" name="caption" id="caption" required>
 			</p>
                         <p>
-			<label class="labelfont" for="name">Location</label>
+			<label for="name">Location</label>
 			<input type="text" name="location" id="location" required>
 			</p>
                         
 			<input type="submit" class="btn btn-block btn-primary" value="Create Event" id="submitEventBtn">
 			
                 </form>
+  
+                        
+
+    
 
 </div>
+<div class="scroll"></div>
 
-
-
+<div class="header">
+<nav class="top-bar bottom-bar">    
+<div class="icon-bar two-up">
+  <a class="item" href="index.html">
+    <i class="fi-home"></i>
+  </a>
+  <a class="item" href="add.html">
+    <i class="fi-plus"></i>
+  </a>
+  <!--<a class="item" href="facebook.html">
+    <i class="fi-widget"></i>
+  </a> -->
+</div>
+</nav>
+</div>  
 
 </body>
 
