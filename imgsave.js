@@ -1,15 +1,15 @@
-Parse.initialize("lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3", "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP");
-PhotoObject = Parse.Object.extend("PhotoObject");
+var parseAPPID = "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3";
+var parseJSID = "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP";
  
 //Initialize Parse
 Parse.initialize(parseAPPID,parseJSID);
  
-var PhotoObject = Parse.Object.extend("Note");
+var NoteOb = Parse.Object.extend("Note");
  
 $(document).on("pageshow", "#home", function(e, ui) {
   $.mobile.loading("show");
  
-	var query = new Parse.Query(PhotoObject);
+	var query = new Parse.Query(NoteOb);
 	query.limit(10);
 	query.descending("createdAt");
  
@@ -54,7 +54,7 @@ $(document).on("pageshow", "#addNote", function(e, ui) {
 			var parseFile = new Parse.File("mypic.jpg", {base64:imagedata});
 			console.log(parseFile);
 				parseFile.save().then(function() {
-					var note = new PhotoObject();
+					var note = new NoteOb();
 					note.set("text",noteText);
 					note.set("picture",parseFile);
 					note.save(null, {
@@ -71,7 +71,7 @@ $(document).on("pageshow", "#addNote", function(e, ui) {
 				});
  
 		} else {
-			var note = new PhotoObject();
+			var note = new NoteOb();
 			note.set("text",noteText);
 			note.save(null, {
 				success:function(ob) {
