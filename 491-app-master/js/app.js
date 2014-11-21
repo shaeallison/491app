@@ -194,6 +194,22 @@ function errorGeo(error){
 		}
 	}
 	
+
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+// PhoneGap is Ready
+function onDeviceReady() {
+    console.log("onDeviceReady()");
+    navigator.geolocation.getCurrentPosition(generateMap, onError);
+    
+}
+
+
+
+
+
+
 function capturePhoto() {
     console.log("capturePhoto()");
     navigator.camera.getPicture(uploadPhoto,null,{sourceType:2,quality:60,});
@@ -217,6 +233,11 @@ function uploadPhoto(data){
 function okay (){
         //Do Something
 }
+
+
+
+
+
 	
 	function gotPic(data) {
 		console.log('got here');
