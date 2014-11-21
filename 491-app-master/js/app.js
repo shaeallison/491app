@@ -56,8 +56,8 @@ function displayContent(){
 function updateContent(distance){
 	
 	
-	var parseAPPID = "sqjjNOSioMoqfwC5aEw4OAoJsPCF1hbWeBLSKB59";
-	var parseJSID = "EQZJbB4ZeutL6IeyJP5NN2ZHXCgp0ml920CDilX9";
+	var parseAPPID = "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3";
+	var parseJSID = "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP";
  
 	//Initialize Parse
 	Parse.initialize(parseAPPID,parseJSID);
@@ -194,50 +194,16 @@ function errorGeo(error){
 		}
 	}
 	
-
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-// PhoneGap is Ready
-function onDeviceReady() {
-    console.log("onDeviceReady()");
-    navigator.geolocation.getCurrentPosition(generateMap, onError);
-    
-}
-
-
-
-
-
-
 function capturePhoto() {
     console.log("capturePhoto()");
-    navigator.camera.getPicture(uploadPhoto,null,{sourceType:2,quality:60,});
-}
+    navigator.camera.getPicture(gotPic,failHandler,{sourceType:2,quality:60,});
+}  
 
-
-
-function uploadPhoto(data){
-    //send file to server
-    console.log("uploadPhoto()");
-   
-   cameraPic.src = data;
-        navigator.notification.alert(
-            'Your photo has been uploaded', //message
-            okay,                           //callback
-            'Photo uploaded',               //title
-            'OK'                            //buttonName
-        );
-}
-
-function okay (){
-        //Do Something
-}
-
-
-
-
-
+function choosePhoto(){
+        //alert("capture button working");
+    navigator.camera.getPicture(gotPic,failHandler,{sourceType:0, destinationType:0, quality:25});
+}  
+ 
 	
 	function gotPic(data) {
 		console.log('got here');
