@@ -21,6 +21,7 @@ function generateMap(position) {
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
     
+    
     var marker = new google.maps.Marker({
         position: currentLatLng,
         map: map,
@@ -40,3 +41,15 @@ function generateMap(position) {
     
     google.maps.event.addDomListener(window, 'load' ,generateMap(position));
     
+
+
+//example photo marker
+var LatLng = new google.maps.LatLng(35.912472, -79.051306)
+
+// To add the marker to the map, use the 'map' property
+var marker = new google.maps.Marker({
+    position: LatLng,
+    title:"Hello World!"
+});
+
+
