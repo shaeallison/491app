@@ -26,6 +26,7 @@ function generateMap(position) {
     var contentString2 = '<img src="img/oldwell.png">';
     var contentString3 = '<img src="img/hesnot.png">';
     var contentString4 = '<img src="img/latenight.png">';
+    var contentString5 = '<img src="img/swain.png">';
     
     var image = 'img/image.png';
     
@@ -41,12 +42,15 @@ function generateMap(position) {
     var infowindow4 = new google.maps.InfoWindow({
       content: contentString4
     });
-    
+    var infowindow5 = new google.maps.InfoWindow({
+      content: contentString5
+    });
     
 
     var OLDWELL = new google.maps.LatLng(35.913025, -79.051218);
     var HESNOT = new google.maps.LatLng(35.913173, -79.056552);
     var LATENIGHT = new google.maps.LatLng(35.900448, -79.043973);
+    var SWAIN = new google.maps.LatLng(35.911610, -79.053101);
     
     
     var marker1 = new google.maps.Marker({
@@ -73,7 +77,13 @@ function generateMap(position) {
         position: LATENIGHT,
         map: map,
         icon: image,
-        title: 'Hes Not Here'
+        title: 'Late Night With Roy'
+    });
+    var marker5 = new google.maps.Marker({
+        position: SWAIN,
+        map: map,
+        icon: image,
+        title: 'Swain Hall'
     });
     
     google.maps.event.addListener(marker2, 'click', function() {
@@ -88,11 +98,16 @@ function generateMap(position) {
 	infowindow4.open(map,marker4);
     });
     
+    google.maps.event.addListener(marker5, 'click', function() {
+	infowindow5.open(map,marker5);
+    });
+    
     google.maps.event.addListener(marker2, 'click', function() {
 	infowindow2.open(map,marker2);
 	infowindow1.close();
 	infowindow3.close();
 	infowindow4.close();
+        infowindow5.close();
     });
     
     google.maps.event.addListener(marker3, 'click', function() {
@@ -100,6 +115,7 @@ function generateMap(position) {
 	infowindow1.close();
 	infowindow2.close();
 	infowindow4.close();
+        infowindow5.close();
     });
     
     google.maps.event.addListener(marker4, 'click', function() {
@@ -107,6 +123,15 @@ function generateMap(position) {
 	infowindow1.close();
 	infowindow2.close();
 	infowindow3.close();
+        infowindow5.close();
+    });
+    
+    google.maps.event.addListener(marker5, 'click', function() {
+	infowindow5.open(map,marker5);
+	infowindow1.close();
+	infowindow2.close();
+	infowindow3.close();
+        infowindow4.close();
     });
     
 

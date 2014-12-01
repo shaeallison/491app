@@ -11,10 +11,17 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // PhoneGap is ready
 function onDeviceReady() {
 	console.log("onDeviceReady()");
+	navigator.geolocation.getCurrentPosition(getPoint, onError);
 
 	};
 
-
+function getPoint(position) {
+	lat=position.coords.latitude;
+	long=position.coords.longitude;
+	
+	
+	currentLocation = new Parse.GeoPoint({latitude: lat, longitude: long});
+}
 
 function onError(error) {
         console.log("onError()");
@@ -30,7 +37,21 @@ $(document).ready(function() {
 	
 	getList(PhotoObject);
 	
+	if($("#submitEventBtn").length === 1) {
+		currentLocation=null;
+		navigator.geolocation.getCurrentPosition(function(position) {
+			//store the long/lat
+			currentLocation = {longitude:position.coords.longitude, latitude:position.coords.latitude};
+			console.log(pos);
+			$("#sumbitEventBtn");
+		}, function(err) {
+			//Since geolocation failed, we can't allow the user to submit
+			alert("Sorry, but we couldn't find your location.");
+		});
 
+	}
+	
+	
     
     $("#commentForm").on("submit", function(e) {
 	e.preventDefault();
@@ -42,11 +63,13 @@ $(document).ready(function() {
 
  
 	var comment = new PhotoObject();
+	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
 				photo:photo,
 				caption:caption,
 				location:location,
+				geoPoint:point
 
 			},{
 				success:function(object) {
@@ -59,7 +82,26 @@ $(document).ready(function() {
 		});
  
 	
-	
+		if($("#event").length === 1) {
+
+		//Update status 
+		$("#event").html("Loading Content...");
+
+		navigator.geolocation.getCurrentPosition(getPoint, onError);
+			
+
+			//Begin our query
+			var query = new Parse.Query(CommentObject);
+			//Only within 10 miles
+			query.withinMiles("geoPoint", currentLocation, 10);
+			query.find({
+				success:function(results) { getList(results,currentLocation); },
+				error: function(error) { alert("Error: " + error.code + " " + error.message); }
+			});
+
+		
+		
+    }
 	
 
     
@@ -112,5 +154,25 @@ $(".text-swap").on( "click", function() {
   }
   
 });
+
+
+	// Create a pointer to an object of class Point with id dlkj83d
+	var Point = Parse.Object.extend("CommentObject");
+	var point = new Point();
+	point.id =  id;
+
+
+	// Save
+	point.save(null, {
+	success: function(point) {
+	  // Saved successfully.
+	  console.log("success");
+	},
+	error: function(point, error) {
+	  // The save failed.
+	  // error is a Parse.Error with an error code and description.
+	  console.log("fail");
+	}
+	});
 
 }

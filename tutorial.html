@@ -1,0 +1,249 @@
+<!--- Param the photo upload form field. --->
+<cfparam name="form.photo" type="string" default="" />
+ 
+ 
+<!---
+    Set default values for latitude and longitude. We're going
+    to be expecting numeric values for this; so, if they are
+    empty strings, we haven't uploaded a photo yet.
+--->
+<cfset latitude = "" />
+<cfset longitude = "" />
+ 
+<!---
+    Set the default value for the photo path. We're expecting a
+    source path; so, if it is empty, we haven't uploaded a photo.
+--->
+<cfset imageSource = "" />
+ 
+ 
+<!---
+    Check to see if the user has uploaded a photo (this will
+    be true if the photo field has a length).
+--->
+<cfif len( form.photo )>
+ 
+    <!--- Upload the photo. --->
+    <cffile
+        result="uploadResult"
+        action="upload"
+        filefield="photo"
+        destination="#expandPath( './upload/' )#"
+        nameconflict="makeunique"
+        />
+ 
+    <!--- Store the image source. --->
+    <cfset imageSource = "./upload/#uploadResult.serverFile#" />
+ 
+    <!--- Read the uploaded photo in. --->
+    <cfset image = imageNew( imageSource ) />
+ 
+    <!---
+        Get the EXIF meta data from the image. This is a list of
+        tags in the EXIF image data.
+    --->
+    <cfset exifTags = imageGetEXIFMetadata( image ) />
+ 
+    <!---
+        Check to make sure the image has all the needed
+        geolocation data for latitude and longitude.
+    --->
+    <cfif (
+        structKeyExists( exifTags, "GPS Latitude" ) &&
+        structKeyExists( exifTags, "GPS Latitude Ref" ) &&
+        structKeyExists( exifTags, "GPS Longitude" ) &&
+        structKeyExists( exifTags, "GPS Longitude Ref" ) &&
+        len( exifTags[ "GPS Latitude" ] ) &&
+        len( exifTags[ "GPS Latitude Ref" ] ) &&
+        len( exifTags[ "GPS Longitude" ] ) &&
+        len( exifTags[ "GPS Longitude Ref" ] )
+        )>
+ 
+        <!---
+            This photo contians all of the geolocation information
+            that we need to map it. Let's extract the informaiton
+            and turn it into decimal format lat/long (which we can
+            then put on the Google map).
+        --->
+ 
+        <!---
+            Get the parts of the sexagesimal latitude (degrees,
+            minues, seconds). We can think of this as a list that
+            is delimited by single and double quotes.
+        --->
+        <cfset latitudeParts = listToArray(
+            exifTags[ "GPS Latitude" ],
+            "'"""
+            ) />
+ 
+        <!--- Get the latitude. --->
+        <cfset latitude = (
+            latitudeParts[ 1 ] +
+            (latitudeParts[ 2 ] / 60) +
+            (latitudeParts[ 3 ] / 3600)
+            ) />
+ 
+        <!---
+            Check to see if we need to negate this value. For
+            the Ref value, N (north) is positive and S (south)
+            is negative.
+        --->
+        <cfif (exifTags[ "GPS Latitude Ref" ] eq "S")>
+ 
+            <!--- Negate the latitude. --->
+            <cfset latitude *= -1 />
+ 
+        </cfif>
+ 
+        <!---
+            Get the parts of the sexagesimal longitude (degrees,
+            minues, seconds). We can think of this as a list that
+            is delimited by single and double quotes.
+        --->
+        <cfset longitudeParts = listToArray(
+            exifTags[ "GPS Longitude" ],
+            "'"""
+            ) />
+ 
+        <!--- Get the latitude. --->
+        <cfset longitude = (
+            longitudeParts[ 1 ] +
+            (longitudeParts[ 2 ] / 60) +
+            (longitudeParts[ 3 ] / 3600)
+            ) />
+ 
+        <!---
+            Check to see if we need to negate this value. For
+            the Ref value, E (east) is positive and W (west)
+            is negative.
+        --->
+        <cfif (exifTags[ "GPS Longitude Ref" ] eq "W")>
+ 
+            <!--- Negate the longitude. --->
+            <cfset longitude *= -1 />
+ 
+        </cfif>
+ 
+    </cfif>
+ 
+</cfif>
+ 
+<cfoutput>
+ 
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <title>Get GeoLocation From iPhone Photo</title>
+        <style type="text/css">
+
+            body {
+                background-color: ##333333 ;
+                margin: 0px 0px 0px 0px ;
+                padding: 0px 0px 0px 0px ;
+                }
+
+            ##photo {
+                color: ##F0F0F0 ;
+                left: 0px ;
+                line-height: 200px ;
+                position: fixed ;
+                text-align: center ;
+                top: 0px ;
+                width: 400px ;
+                }
+
+            ##photo img {
+                border: 1px solid ##F0F0F0 ;
+                display: block ;
+                margin: 0px auto 0px auto ;
+                }
+
+            ##upload-form {
+                background-color: ##000000 ;
+                bottom: 0px ;
+                left: 0px ;
+                margin: 0px 0px 0px 0px ;
+                padding: 15px 0px 15px 0px ;
+                position: fixed ;
+                text-align: center ;
+                width: 400px ;
+                }
+
+            ##map {
+                background-color: ##252525 ;
+                border-left: 1px solid ##F0F0F0 ;
+                left: 400px ;
+                position: fixed ;
+                top: 0px ;
+                }
+
+        </style>
+        <script
+            type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiXbS8STLM29OjZdtq9s5V6WqJTRkRrd8">>
+        </script>
+        <script type="text/javascript">
+
+            // Load the jQuery library.
+            google.load( "jquery", "1.4.0" );
+
+            // Load the maps.
+            google.load( "maps", "2" );
+
+            // Store the latitude / longitude value (so that
+            // we can refernce in subsequent javascript files).
+            window.latitude = "#latitude#";
+            window.longitude = "#longitude#";
+
+        </script>
+        <script type="text/javascript" src="tutorial.js"></script>
+    </head>
+    <body>
+ 
+        <!-- BEGIN: Photo Preview. -->
+        <div id="photo">
+ 
+            <!--- Check to see if we have a photo. --->
+            <cfif len( imageSource )>
+ 
+                <img
+                    src="#imageSource#"
+                    width="300"
+                    />
+ 
+            <cfelse>
+ 
+                <em>Upload your iPhone photo below.</em>
+ 
+            </cfif>
+ 
+        </div>
+        <!-- END: Photo Preview. -->
+ 
+ 
+        <!-- BEGIN: Upload Form. -->
+        <form
+            id="upload-form"
+            action="#cgi.script_name#"
+            method="post"
+            enctype="multipart/form-data">
+ 
+            <input type="file" name="photo" size="33" />
+            <input type="submit" value="Upload" />
+        </form>
+        <!-- END: Upload Form. -->
+ 
+ 
+        <!-- BEGIN: Google Map. -->
+        <div id="map">
+            <!--
+                To be loaded dynamically based on the geolocation
+                of the uploaded iPhone photo.
+            -->
+        </div>
+        <!-- END: Google Map. -->
+ 
+    </body>
+    </html>
+ 
+</cfoutput>
