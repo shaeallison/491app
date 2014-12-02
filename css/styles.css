@@ -43,6 +43,9 @@ body{
   color: white;
 }
 
+label{
+  color: white;
+}
 
 a{
   text-decoration: none;
@@ -69,6 +72,19 @@ a.camera-control{
 }
 
 button.camera-control{
+  background-color: #381E29;
+  font-family: bebasneue;
+  font-size: 25px;
+  display: block;
+  margin: auto;
+}
+
+a.button{
+  color: white;
+  text-align:center;
+}
+
+button.button{
   background-color: #381E29;
   font-family: bebasneue;
   font-size: 25px;
