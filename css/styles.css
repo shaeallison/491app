@@ -6,6 +6,11 @@
   src: url(fonts/BebasNeue.otf)
 }
 
+@font-family{
+  font-family: gobold;
+  src: url(fonts/GoBoldRegular.ttf)
+}
+
 .header{
     height: 65px;
     line-height: 50px;

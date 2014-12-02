@@ -15,10 +15,7 @@ function capturePhoto() {
     navigator.camera.getPicture(uploadPhoto,null,{sourceType:2, destinationType:0, quality:60,});
 }
 
-function choosePhoto(){
-        //alert("capture button working");
-    navigator.camera.getPicture(gotPic,failHandler,{sourceType:0, destinationType:0, quality:10});
-}  
+
 
 function uploadPhoto(data){
     //send file to server
