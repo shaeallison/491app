@@ -102,6 +102,7 @@ input#submitEventBtn.btn.btn-block.btn-primary{
   border: none;
 }
 
-.gm-style-iw.div{
-  background-color: red;
+.image{
+  max-height: 250px;
+  max-width: 250px;
 }

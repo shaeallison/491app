@@ -29,11 +29,11 @@ function generateMap(position) {
     
     
     
-    var contentString1 = '<img src="img/oldwell.png">';
-    var contentString2 = '<img src="img/oldwell.png">';
-    var contentString3 = '<img src="img/hesnot.png">';
-    var contentString4 = '<img src="img/latenight.png">';
-    var contentString5 = '<img src="img/swain.png">';
+    var contentString1 = '<img class="image" src="img/oldwell.png">';
+    var contentString2 = '<img class="image" src="img/oldwell.png">';
+    var contentString3 = '<img class="image" src="img/hesnot.png">';
+    var contentString4 = '<img class="image" src="img/latenight.png">';
+    var contentString5 = '<img class="image" src="img/swain.png">';
     
     var image = 'img/image.png';
     
