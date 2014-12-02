@@ -8,7 +8,7 @@
 
 @font-family{
   font-family: gobold;
-  src: url(fonts/GoBoldRegular.ttf)
+  src: url(fonts/GoboldRegular.ttf)
 }
 
 .header{
@@ -78,7 +78,7 @@ a.camera-control{
 
 button.camera-control{
   background-color: #381E29;
-  font-family: bebasneue;
+  font-family: helvetica neue;
   font-size: 25px;
   display: block;
   margin: auto;
@@ -91,7 +91,7 @@ a.button{
 
 button.button{
   background-color: #381E29;
-  font-family: bebasneue;
+  font-family: helvetica neue;
   font-size: 25px;
   display: block;
   margin: auto;
@@ -102,7 +102,7 @@ input#submitEventBtn.btn.btn-block.btn-primary{
   background: none;
   display: block;
   margin: auto;
-  font-family: bebasneue;
+  font-family: helvetica neue;
   font-size: 25px;
   border: none;
 }
