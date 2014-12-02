@@ -22,6 +22,13 @@ function generateMap(position) {
         mapOptions);
     
     
+    
+    
+    
+    
+    
+    
+    
     var contentString1 = '<img src="img/oldwell.png">';
     var contentString2 = '<img src="img/oldwell.png">';
     var contentString3 = '<img src="img/hesnot.png">';
