@@ -90,9 +90,7 @@ $(document).ready(function() {
 					console.log("Saved object");
 					alert("You've created an event");
 				},
-				error:function(model, error) {
-					console.log(":(");
-				}
+
 		});
  
 	
