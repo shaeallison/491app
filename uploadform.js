@@ -39,6 +39,7 @@ $(document).ready(function() {
 	var photo = $("#photo").val();
 	var caption = $("#caption").val();
 	var location = $("#location").val();
+	var school = $("#school").val();
 
  
 	var comment = new PhotoObject();
@@ -47,6 +48,7 @@ $(document).ready(function() {
 				photo:photo,
 				caption:caption,
 				location:location,
+				school: school,
 
 			},{
 				success:function(object) {
