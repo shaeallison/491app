@@ -10,6 +10,7 @@ function onDeviceReady() {
 }
 
 
+
 function capturePhoto() {
     console.log("capturePhoto()");
     navigator.camera.getPicture(uploadPhoto,null,{sourceType:0, destinationType:0, quality:60,});
@@ -34,7 +35,6 @@ function uploadPhoto(data){
 function okay (){
         //Do Something
 }
-
 
 
 

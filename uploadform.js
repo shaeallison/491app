@@ -3,7 +3,7 @@ PhotoObject = Parse.Object.extend("PhotoObject");
 
 var htmlBuilder = "";
 
-var currentLocation;
+var myLocation;
 
 
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -13,6 +13,19 @@ function onDeviceReady() {
 	console.log("onDeviceReady()");
 
 	};
+
+
+//geolocation	
+function getPoint(position) {
+	lat=position.coords.latitude;
+	long=position.coords.longitude;
+	
+	
+	currentLocation = new Parse.GeoPoint({latitude: lat, longitude: long});
+}
+
+
+
 
 
 
@@ -30,7 +43,26 @@ $(document).ready(function() {
 	
 	getList(PhotoObject);
 	
+	
+	
+//geolocation		
+	if($("#submitEventBtn").length === 1) {
+		currentLocation=null;
+		navigator.geolocation.getCurrentPosition(function(position) {
+			//store the long/lat
+			currentLocation = {longitude:position.coords.longitude, latitude:position.coords.latitude};
+			console.log(pos);
+			$("#sumbitEventBtn");
+		}, function(err) {
+			//Since geolocation failed, we can't allow the user to submit
+			alert("Sorry, but we couldn't find your location.");
+		});
 
+	}
+	
+
+	
+	
     
     $("#commentForm").on("submit", function(e) {
 	e.preventDefault();
@@ -40,15 +72,18 @@ $(document).ready(function() {
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
+	var geoPoint = $("#geoPoint").val();
 
  
 	var comment = new PhotoObject();
+	var geoPoint = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
 				photo:photo,
 				caption:caption,
 				location:location,
 				school: school,
+				geoPoint:geoPoint
 
 			},{
 				success:function(object) {
@@ -116,3 +151,84 @@ $(".text-swap").on( "click", function() {
 });
 
 }
+
+
+function displayContent(){
+	
+	
+	 
+	var PhotoObject = Parse.Object.extend("photos");
+	
+	
+	var query = new Parse.Query(PhotoObject);
+	
+	query.withinMiles("geopoint", myLocation, 10);
+	var yesterday = new Date();
+	yesterday.setDate(yesterday.getDate()-1);
+	query.greaterThan("createdAt", yesterday);
+	query.descending("createdAt");
+	query.limit(10);
+ 
+	query.find({
+		success:function(results) {
+			var s = "";
+			for(var i=0; i<results.length; i++) {
+				//Lame - should be using a template
+				s += "<div class='row'>  ";
+				var pic = results[i].get("picture");
+				if(pic) {
+					s += "<br/><img src='" + pic.url() + "' style='width: 100%;'>";
+				}
+				s += "</div> "
+				
+				s += "<p>"
+				
+				s += results[i].get("text");
+				
+				s += "</p>"
+				
+				
+				
+				
+			}
+			$("#content").html(s);
+		},error:function(e) {
+			
+ 
+		}
+	});
+}
+
+function onDeviceReady() {
+	console.log("onDeviceReady()");
+	var imagedata = "";
+	page=1;
+	navigator.geolocation.getCurrentPosition(gotGeo, errorGeo,{enableHighAccuracy: true, maximumAge: 5000, timeout: 5000 });
+	
+	
+}
+
+function gotGeo(position){
+	
+	lat=position.coords.latitude;
+	long=position.coords.longitude;
+	
+	console.log(lat);
+	console.log(long);
+	
+	myLocation = new Parse.GeoPoint({latitude: lat, longitude: long});
+	displayContent();
+	
+}
+
+function errorGeo(error){
+	   alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+	
+	
+	
+}
+
+
+
+
