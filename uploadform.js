@@ -72,25 +72,27 @@ $(document).ready(function() {
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
-	var geoPoint = $("#geoPoint").val();
+	var point = $("#geoPoint").val();
 
  
 	var comment = new PhotoObject();
-	var geoPoint = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
+	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
 				photo:photo,
 				caption:caption,
 				location:location,
 				school: school,
-				geoPoint:geoPoint
+				geoPoint:point
 
 			},{
 				success:function(object) {
 					console.log("Saved object");
 					alert("You've created an event");
 				},
-
+				error:function(model, error) {
+					console.log(":(");
+				}
 		});
  
 	
