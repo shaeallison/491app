@@ -229,7 +229,7 @@ function errorGeo(error){
 }
 
 
-// HTML
+/* HTML KBWEEKS
 
 function getList(PhotoObject){
     console.log("getList" + PhotoObject);
@@ -258,4 +258,56 @@ function getList(PhotoObject){
         
     });
 	
+}
+*/
+
+
+
+//Taylor's HTML
+function displayContent(){
+	
+	
+	var parseAPPID = "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3";
+	var parseJSID = "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP";
+ 
+	//Initialize Parse
+	Parse.initialize(parseAPPID,parseJSID);
+	 
+	var PhotoObject = Parse.Object.extend("photos");
+	
+	
+	var query = new Parse.Query(PhotoObject);
+	
+	query.withinMiles("geoPoint", myLocation, 10);
+	query.descending("createdAt");
+	query.limit(25);
+ 
+	query.find({
+		success:function(results) {
+			var s = "";
+			for(var i=0; i<results.length; i++) {
+				//Lame - should be using a template
+				s += "<div class='row'>  ";
+				var pic = results[i].get("photo");
+				if(pic) {
+					s += "<br/><img src='" + pic.url() + "' style='width: 100%;'>";
+				}
+				s += "</div> "
+				
+				s += "<p>"
+				
+				s += results[i].get("caption");
+				
+				s += "</p>"
+				
+				
+				
+				
+			}
+			$("#content").html(s);
+		},error:function(e) {
+			
+ 
+		}
+	});
 }
