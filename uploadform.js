@@ -70,7 +70,6 @@ $(document).ready(function() {
 	e.preventDefault();
  
 	//get values
-	var photo = $("#photo").val();
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
@@ -81,7 +80,7 @@ $(document).ready(function() {
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
-				photo:photo,
+				file:photo,
 				caption:caption,
 				location:location,
 				school: school,
@@ -145,7 +144,7 @@ function getList(PhotoObject){
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.photo + '</br>' + results[index].attributes.caption + '</br>' + " Location: " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '</div>'+ '</br>' + '</br>' +
 	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
-            $("#file").html(htmlBuilder);
+            $("#photos").html(htmlBuilder);
 	    buttonClick();
         },
 	
