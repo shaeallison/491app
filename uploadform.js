@@ -11,7 +11,6 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // PhoneGap is ready
 function onDeviceReady() {
 	console.log("onDeviceReady()");
-	navigator.geolocation.getCurrentPosition(getPoint, onError);
 	console.log(pos);
 
 	};
