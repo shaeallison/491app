@@ -229,5 +229,33 @@ function errorGeo(error){
 }
 
 
+// HTML
 
+function getList(PhotoObject){
+    console.log("getList" + PhotoObject);
+    var query = new Parse.Query(PhotoObject);
+    console.log(query);
+    query.descending("createdAt");
+    query.find({
+        success: function(results) {
+            //console.log(results);
+            $.each(results, function( index, value ) {
+            console.log(results[index].attributes.photo);
+	    console.log(results[index].id);
 
+            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.photo + '</br>' + results[index].attributes.caption + " : " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '<div id="place-x">' + '</div>'+ '</br>' +'<input id="' + results[index].id + '" class="text-swap" value="Add me" type="button" />' + '</br>' +
+	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '<span class="counter">' + currentGoing +'</span>' + '' + '</div>' + '</div>' +'</div>' + '</div>';
+});
+            $("#photos").html(htmlBuilder);
+	    buttonClick();
+        },
+	
+        
+        error: function(error) {
+        }
+	
+	
+        
+    });
+	
+}

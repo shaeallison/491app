@@ -23,18 +23,32 @@ function generateMap(position) {
     
 
 
+// create new marker?
+
+var marker = new google.maps.Marker (point);
+
+// Add the marker to the map.
+map.addOverlay( marker);
+
+//open the info box
+map.openInfoWindowHtml (
+    marker.getCurrentLatLng(),
+    (
+        ("<img src'" + photo.attr( "photo" ) + "' width='100' />")
+    )
+);
     
     
     
     
-    
-    
-    
+ 
+/*  
     var contentString1 = '<img class="image" src="img/oldwell.png">';
     var contentString2 = '<img class="image" src="img/oldwell.png">';
     var contentString3 = '<img class="image" src="img/hesnot.png">';
     var contentString4 = '<img class="image" src="img/latenight.png">';
     var contentString5 = '<img class="image" src="img/swain.png">';
+    var contentString6 = '<img id="photo">';
     
     var image = 'img/image.png';
     
@@ -140,8 +154,9 @@ function generateMap(position) {
 	infowindow2.close();
 	infowindow3.close();
         infowindow4.close();
-    });
+    }); 
     
+*/    
 
 }
 
