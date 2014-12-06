@@ -5,9 +5,9 @@
 		id        = "shaeallison.com"
 		versionCode="1"
 		version   = "1">
-		<name>Eventurous</name>
+		<name>Iter</name>
 		<description>
-                   An anonymous social event app that shows you popular events in your area.
+                   An app that allows you to anonymously post photos to a map based on your current location.
 		</description>
 		<author href="shaeallison.com" email="allisosr@live.unc.edu">
                     Shae Allison
