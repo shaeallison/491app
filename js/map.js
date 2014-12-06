@@ -23,21 +23,7 @@ function generateMap(position) {
     
 
 
-// create new marker?
 
-var marker = new google.maps.Marker (point);
-
-// Add the marker to the map.
-map.addOverlay( marker);
-
-//open the info box
-map.openInfoWindowHtml (
-    marker.getCurrentLatLng(),
-    (
-        ("<img src'" + photo.attr( "photo" ) + "' width='100' />")
-    )
-);
-    
     
     
     
