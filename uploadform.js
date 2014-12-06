@@ -72,7 +72,7 @@ $(document).ready(function() {
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
-	var point = $("#geoPoint").val();
+
 
  
 	var comment = new PhotoObject();
