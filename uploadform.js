@@ -70,7 +70,7 @@ $(document).ready(function() {
 	e.preventDefault();
  
 	//get values
-	var file = $("#file").val();
+	/*var photo = $("#photo").val();*/
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
@@ -79,9 +79,10 @@ $(document).ready(function() {
  
 	var comment = new PhotoObject();
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
+	var photo = new Parse.File(imagedata)
 	comment.save(
 			{
-				file:file,
+				file:photo,
 				caption:caption,
 				location:location,
 				school: school,
@@ -105,62 +106,6 @@ $(document).ready(function() {
 });
 
 
-/*
-function displayContent(){
-	
-	
-	 
-	var PhotoObject = Parse.Object.extend("photos");
-	
-	
-	var query = new Parse.Query(PhotoObject);
-	
-	query.withinMiles("geopoint", myLocation, 10);
-	var yesterday = new Date();
-	yesterday.setDate(yesterday.getDate()-1);
-	query.greaterThan("createdAt", yesterday);
-	query.descending("createdAt");
-	query.limit(10);
- 
-	query.find({
-		success:function(results) {
-			var s = "";
-			for(var i=0; i<results.length; i++) {
-				//Lame - should be using a template
-				s += "<div class='row'>  ";
-				var pic = results[i].get("picture");
-				if(pic) {
-					s += "<br/><img src='" + pic.url() + "' style='width: 100%;'>";
-				}
-				s += "</div> "
-				
-				s += "<p>"
-				
-				s += results[i].get("text");
-				
-				s += "</p>"
-				
-				
-				
-				
-			}
-			$("#content").html(s);
-		},error:function(e) {
-			
- 
-		}
-	});
-}
-
-function onDeviceReady() {
-	console.log("onDeviceReady()");
-	var imagedata = "";
-	page=1;
-	navigator.geolocation.getCurrentPosition(gotGeo, errorGeo,{enableHighAccuracy: true, maximumAge: 5000, timeout: 5000 });
-	
-	
-}
-*/
 
 function gotGeo(position){
 	
@@ -201,7 +146,7 @@ function getList(PhotoObject){
             htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.file + '</br>' + results[index].attributes.caption + '</br>' + " Location: " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '</div>'+ '</br>' + '</br>' +
 	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
-            $("#files").html(htmlBuilder);
+            $("#file").html(htmlBuilder);
 	    buttonClick();
         },
 	
@@ -215,57 +160,5 @@ function getList(PhotoObject){
 	
 }
 
-
-
-
-/*Taylor's HTML
-function displayContent(){
-	
-	
-	var parseAPPID = "lgAdW3MFp6eMnSdtkcYKXqsjwLDVPvzPWYYZa9V3";
-	var parseJSID = "IpsgowMm56E1TVYVvF3UC1x9gA6I8Lka4MId9HiP";
- 
-	//Initialize Parse
-	Parse.initialize(parseAPPID,parseJSID);
-	 
-	var PhotoObject = Parse.Object.extend("photos");
-	
-	
-	var query = new Parse.Query(PhotoObject);
-	
-	query.withinMiles("geoPoint", myLocation, 10);
-	query.descending("createdAt");
-	query.limit(25);
- 
-	query.find({
-		success:function(results) {
-			var s = "";
-			for(var i=0; i<results.length; i++) {
-				//Lame - should be using a template
-				s += "<div class='row'>  ";
-				var pic = results[i].get("photo");
-				if(pic) {
-					s += "<br/><img src='" + pic.url() + "' style='width: 100%;'>";
-				}
-				s += "</div> "
-				
-				s += "<p>"
-				
-				s += results[i].get("caption");
-				
-				s += "</p>"
-				
-				
-				
-				
-			}
-			$("#content").html(s);
-		},error:function(e) {
-			
- 
-		}
-	});
-}
-*/
 
 
