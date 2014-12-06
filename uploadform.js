@@ -70,6 +70,7 @@ $(document).ready(function() {
 	e.preventDefault();
  
 	//get values
+	var photo = $("#photo").val();
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
@@ -80,7 +81,7 @@ $(document).ready(function() {
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
-				file:photo,
+				photo:photo,
 				caption:caption,
 				location:location,
 				school: school,

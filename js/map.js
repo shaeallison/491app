@@ -28,7 +28,7 @@ function generateMap(position) {
     
     
  
-/*  
+ 
     var contentString1 = '<img class="image" src="img/oldwell.png">';
     var contentString2 = '<img class="image" src="img/oldwell.png">';
     var contentString3 = '<img class="image" src="img/hesnot.png">';
@@ -142,7 +142,7 @@ function generateMap(position) {
         infowindow4.close();
     }); 
     
-*/    
+
 
 }
 
