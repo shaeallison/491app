@@ -245,7 +245,7 @@ function getList(PhotoObject){
             console.log(results[index].attributes.photo);
 	    console.log(results[index].id);
 
-            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + '<img src="results[index].attributes.photo">' + '</br>' + results[index].attributes.caption + '</br>' + " Location: " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '</div>'+ '</br>' + '</br>' +
+            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.photo + '</br>' + results[index].attributes.caption + '</br>' + " Location: " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '</div>'+ '</br>' + '</br>' +
 	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
             $("#photos").html(htmlBuilder);
