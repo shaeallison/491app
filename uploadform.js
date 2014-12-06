@@ -70,7 +70,7 @@ $(document).ready(function() {
 	e.preventDefault();
  
 	//get values
-	var photo = $("#photo").val();
+	var file = $("#file").val();
 	var caption = $("#caption").val();
 	var location = $("#location").val();
 	var school = $("#school").val();
@@ -81,7 +81,7 @@ $(document).ready(function() {
 	var point = new Parse.GeoPoint({latitude: currentLocation.latitude, longitude: currentLocation.longitude});
 	comment.save(
 			{
-				photo:photo,
+				file:file,
 				caption:caption,
 				location:location,
 				school: school,
@@ -90,7 +90,7 @@ $(document).ready(function() {
 			},{
 				success:function(object) {
 					console.log("Saved object");
-					alert("You've created an event");
+					alert("You've uploaded a photo");
 				},
 
 		});
@@ -104,53 +104,6 @@ $(document).ready(function() {
     });
 });
 
-
-
-
-function getList(PhotoObject){
-    console.log("getList" + PhotoObject);
-    var query = new Parse.Query(PhotoObject);
-    query.find({
-        success: function(results) {
-            console.log(results);
-            $.each(results, function( index, value ) {
-            console.log(results[index].attributes.cost);
-            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-9 columns">' + '<ul>' + results[index].attributes.name + '</br>' + results[index].attributes.venue + " : " + results[index].attributes.town + ", " + results[index].attributes.state +  '</br>' + results[index].attributes.day + " | " + results[index].attributes.time + '</br>'
-            + results[index].attributes.cost + '</ul>' + '</div>' +'<div class="small-2 columns">'+'<input class="text-swap" value="Not Going" type="button" />' + '</br>' + '<div class="friend-box">' + '<i class="fi-torso">' + '<span class="counter"> 0</span>' + '</i>' + '</div>' + '</div>' + '</div>' + '</div>' + '</a>';
-});
-            $("#event").html(htmlBuilder);
-	    buttonClick();
-        },
-        
-        error: function(error) {
-        }
-	
-	
-        
-    });
-	
-}
-
-function buttonClick(){
-	console.log("button");
-//var button = document.querySelectorAll("button")[0];
-
-$(".text-swap").on( "click", function() {
-	console.log("clicked");
-	var button = $(this);
-	var counter = $(this).siblings(".counter");
-	console.log(counter);
-	console.log(button.attr('value'));
-  if (button.attr('value') == "Not Going") {
-	button.attr('value', 'Going');
-  } else {
-	button.attr('value', 'Not Going');
-
-  }
-  
-});
-
-}
 
 /*
 function displayContent(){
@@ -242,13 +195,13 @@ function getList(PhotoObject){
         success: function(results) {
             //console.log(results);
             $.each(results, function( index, value ) {
-            console.log(results[index].attributes.photo);
+            console.log(results[index].attributes.file);
 	    console.log(results[index].id);
 
-            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.photo + '</br>' + results[index].attributes.caption + '</br>' + " Location: " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '</div>'+ '</br>' + '</br>' +
+            htmlBuilder +=  '<div class="box">' + '<div class="row">' + '<div class="small-10 columns">' + '<ul>' + '</br>' + results[index].attributes.file + '</br>' + results[index].attributes.caption + '</br>' + " Location: " + results[index].attributes.location + '</ul>' + '</div>' + '<div class="small-1 columns">'+ '</div>'+ '</br>' + '</br>' +
 	    '<div class="friend-box">' + '<i class="fi-torso"></i> ' + '' + '</div>' + '</div>' +'</div>' + '</div>';
 });
-            $("#photos").html(htmlBuilder);
+            $("#files").html(htmlBuilder);
 	    buttonClick();
         },
 	
